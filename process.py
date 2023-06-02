@@ -16,7 +16,7 @@ input_shape = 14
 def load_response():
     global responses
     responses = {}
-    with open('dataset-chatbot/safebot.json') as content:
+    with open('dataset.json') as content:
         data = json.load(content)
     for intent in data['intents']:
         responses[intent['tag']]=intent['responses']
@@ -25,9 +25,9 @@ def load_response():
 def preparation():
     load_response()
     global lemmatizer, tokenizer, le, model
-    tokenizer = pickle.load(open('model-chatbot/tokenizers.pkl', 'rb'))
-    le = pickle.load(open('model-chatbot/label_encoder.pkl', 'rb'))
-    model = keras.models.load_model('model-chatbot/chatbot_model.h5')
+    tokenizer = pickle.load(open('tokenizers.pkl', 'rb'))
+    le = pickle.load(open('le.pkl', 'rb'))
+    model = keras.models.load_model('chatbot_model.h5')
     lemmatizer = WordNetLemmatizer()
     nltk.download('punkt', quiet=True)
     nltk.download('wordnet', quiet=True)
