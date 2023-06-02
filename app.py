@@ -13,8 +13,6 @@ import joblib
 
 from process import preparation, generate_response
 
-preparation()
-
 # =[Variabel Global]=============================
 
 app   = Flask(__name__, static_url_path='/static')
